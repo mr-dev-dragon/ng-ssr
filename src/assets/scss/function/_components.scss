@@ -1,0 +1,64 @@
+@mixin button($class: primary) {
+  border: 1.5px solid $primary-color;
+  border-radius: 3px;
+  text-transform: uppercase;
+  @include transition();
+  background: none;
+  text-rendering: optimizeLegibility;
+  cursor: pointer;
+  text-align: center;
+
+  @if $class ==primary {
+    height: 20px;
+    line-height: 17px;
+    font-size: 10px;
+    @include letter-spacing(160, 10px);
+  }
+
+  @else if $class ==big {
+    font-size: 14px;
+    @include flex();
+    @include justify-content();
+    @include align-items();
+    width: fit-content;
+    margin: 0 auto;
+    line-height: 20px;
+    min-height: 28px;
+    padding: 0 10px;
+  }
+
+  &:hover {
+    background: $primary-color;
+    color: $white;
+  }
+}
+
+
+
+@mixin icons ($position: before,
+  $icon: false,
+  $icon-size: 14px,
+  $icon-line-height: 18px,
+  $icon-color: $primary-color) {
+  @if $position =="before" {
+    &:before {
+      content: $icon;
+      font-family: 'icomoon';
+      font-size: $icon-size;
+      line-height: $icon-line-height;
+      color: $icon-color;
+      margin-right: 8px;
+    }
+  }
+
+  @else if $position =="after" {
+    &:after {
+      content: $icon;
+      font-family: 'icomoon';
+      font-size: $icon-size;
+      line-height: $icon-line-height;
+      color: $icon-color;
+      margin-left: 8px;
+    }
+  }
+}
